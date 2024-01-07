@@ -6,6 +6,7 @@ interface User extends Document {
   firstName: string;
   lastName: string;
   password: string;
+  appliedJobs: mongoose.Types.ObjectId[];
   role: UserRole;
 }
 
@@ -14,6 +15,7 @@ const userSchema = new Schema<User>({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   password: { type: String, required: true },
+  appliedJobs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Job' }],
   role: { type: String, enum: ['user', 'admin'], default: 'user' },
 });
 
