@@ -7,6 +7,7 @@
     "build": "tsc",
     "start": "node dist/main.js",
     "dev": "tsc --watch & NODE_ENV=dev nodemon dist/main.js",
+    "db-helper": "tsc && node dist/bin/job-portal-db-helper.js",
     "test": "vitest"
   },
   "keywords": [],
