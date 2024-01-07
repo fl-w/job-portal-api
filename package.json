@@ -2,11 +2,11 @@
   "name": "job-portal-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "build": "tsc",
     "start": "node dist/main.js",
-    "dev": "tsc --watch & NODE_ENV=dev nodemon dist/main.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/main.ts",
     "db-helper": "tsc && node dist/bin/job-portal-db-helper.js",
     "test": "vitest"
   },
@@ -35,8 +35,8 @@
     "@types/supertest": "^6.0.2",
     "@types/swagger-ui-express": "^4.1.6",
     "mongodb-memory-server": "^9.1.4",
-    "nodemon": "^3.0.2",
     "supertest": "^6.3.3",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3",
     "vitest": "^1.1.3"
   }
