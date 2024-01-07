@@ -192,7 +192,10 @@ router.post(
     await newApplication.save();
     res
       .status(201)
-      .json({ id: newApplication.id, message: 'Successfully applied for the job' });
+      .json({
+        id: newApplication.id,
+        message: 'Successfully applied for the job',
+      });
   }
 );
 
