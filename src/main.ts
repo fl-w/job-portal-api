@@ -12,6 +12,7 @@ import cors from 'cors';
 import { globalErrorHandler } from './middleware';
 import { config } from './config';
 
+const port = config.PORT;
 const app = express();
 
 app.use(cors({ origin: true, credentials: true }));
@@ -25,11 +26,12 @@ app.use('/api/user', user);
 
 app.use(globalErrorHandler);
 
-const port = config.PORT;
-
-app.listen(port, () => {
-  mongoose.connect(config.MONGO_URI || '');
-  console.log(`🚀 Running jop-portal express server on ${port}...`);
-});
-
 export default app;
+
+// Start the server only if the script is run directly (not imported)
+if (require.main === module) {
+  app.listen(port, () => {
+    mongoose.connect(config.MONGO_URI || '');
+    console.log(`🚀 Running jop-portal express server on ${port}...`);
+  });
+}
